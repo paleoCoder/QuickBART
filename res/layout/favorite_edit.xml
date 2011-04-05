@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+    
+    <TextView 
+    	android:id="@+id/tvDepart"
+    	android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content"
+    	android:layout_alignParentTop = "true"
+    	android:text="@string/edit_text_depart">
+   	</TextView>
+    <Spinner 
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content" 
+    	android:layout_below = "@+id/tvDepart"
+    	android:id="@+id/spinDepart">
+   	</Spinner>
+    <TextView
+    	android:id="@+id/tvDestination" 
+    	android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content"
+    	android:layout_below="@+id/spinDepart"
+    	android:text="@string/edit_text_destination">
+   	</TextView>
+    <Spinner 
+    	android:layout_height="wrap_content" 
+    	android:layout_width="fill_parent" 
+    	android:layout_below="@+id/tvDestination"
+    	android:id="@+id/spinDestination" >
+    </Spinner>
+    <Button
+    	android:id="@+id/btnFavoriteSave" 
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content"
+    	android:layout_alignParentBottom = "true"
+    	android:layout_centerHorizontal = "true"
+    	android:text="@string/edit_text_button">
+   	</Button>
+    
+
+</RelativeLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+	<TableLayout	
+		xmlns:android="http://schemas.android.com/apk/res/android" 
+	   	android:layout_width="fill_parent" 
+	   	android:layout_height="fill_parent">
+	   	<TableRow>
+	   		<!--  Notice of transfers -->
+			<TextView
+				xmlns:android="http://schemas.android.com/apk/res/android"
+				android:id="@+id/detailsTransfers"
+				android:text="@string/details_transfer_text"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:paddingBottom="6sp"
+				android:textSize="18sp" />
+	   	</TableRow>
+	   	<TableRow>
+		   	<!-- Platform information -->
+		   	<TextView
+				xmlns:android="http://schemas.android.com/apk/res/android"
+				android:id="@+id/detailsPlatformText"
+				android:text="Platform: " />
+			<TextView
+				xmlns:android="http://schemas.android.com/apk/res/android"
+				android:id="@+id/detailsPlatformInfo"
+				android:textSize="18sp"/>
+	   	</TableRow>
+	   	<TableRow>
+		   	<!--  Departure info -->
+			<TextView
+				xmlns:android="http://schemas.android.com/apk/res/android"
+				android:id="@+id/detailsDepartText"/>
+			<TextView
+				xmlns:android="http://schemas.android.com/apk/res/android"
+				android:id="@+id/detailsDepartInfo"
+				android:textSize="18sp"/>
+	   	</TableRow>
+	   	<TableRow>
+		   	<!--  arrival info -->
+			<TextView
+				xmlns:android="http://schemas.android.com/apk/res/android"
+				android:id="@+id/detailsDestText"/>
+			
+			<TextView
+				xmlns:android="http://schemas.android.com/apk/res/android"
+				android:id="@+id/detailsDestInfo"
+				android:textSize="18sp"/>	
+	   	</TableRow>   	
+	</TableLayout>
+	

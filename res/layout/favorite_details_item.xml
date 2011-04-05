@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android" 
+   	android:id="@+id/detailsRelMain" 
+   	android:layout_width="fill_parent" 
+   	android:layout_height="fill_parent">
+   	
+   	<!--  Notice of transfers -->
+   	<TextView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/detailsTransfers"
+		android:text="@string/details_transfer_text"
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent"
+		android:layout_alignTop="@+id/relMain"
+		android:paddingBottom="6sp"
+		android:textSize="18sp" />
+   	
+   	<!-- Platform information -->
+   	<TextView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/detailsPlatformText"
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent"
+		android:layout_below="@+id/detailsTransfers"
+		android:text="Platform: " />
+	<TextView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/detailsPlatformInfo"
+		android:textSize="18sp"
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent"
+		android:layout_below="@+id/detailsTransfers"
+		android:layout_toRightOf="@+id/detailsPlatformText" />
+		
+	<!--  Departure info -->
+	<TextView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/detailsDepartText"
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent"
+		android:layout_below="@+id/detailsPlatformInfo" />
+		
+	<TextView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/detailsDepartInfo"
+		android:textSize="18sp"
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent" 
+		android:layout_below="@+id/detailsPlatformInfo"
+		android:layout_toRightOf="@+id/detailsDepartText" />
+		
+	<!--  arrival info -->
+	<TextView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/detailsDestText"
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent"
+		android:layout_below="@+id/detailsDepartText" />
+	
+	<TextView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/detailsDestInfo"
+		android:textSize="18sp"
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent" 
+		android:layout_below="@+id/detailsDepartText"
+		android:layout_toRightOf="@+id/detailsDestText"/>
+
+</RelativeLayout>

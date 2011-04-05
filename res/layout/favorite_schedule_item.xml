@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android" 
+   	android:id="@+id/relMain" 
+   	android:layout_width="fill_parent" 
+   	android:layout_height="fill_parent">
+   	
+	<!-- Depart and Destination Tags aligned on left  -->			        	
+	<TextView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/tvDepartText"
+		android:text="@string/favorite_schedule_depart"
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent"
+		android:layout_alignParentLeft="true"/>
+	<TextView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/tvDestText"
+		android:text="@string/favorite_schedule_dest"
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent"
+		android:layout_alignParentLeft="true"
+		android:layout_below="@+id/favoriteInfoDepart"/>
+    	
+
+	<!-- Times aligned in center -->
+	<TextView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/favoriteInfoDepart"
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent"
+		android:layout_centerHorizontal="true"
+		android:textSize="24sp"/>
+	<TextView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/favoriteInfoDest"
+		android:layout_width="wrap_content"
+		android:layout_height="fill_parent"
+		android:layout_centerInParent="true"
+		android:layout_below="@+id/favoriteInfoDepart"
+		android:textSize="24sp"/>
+
+	<!-- Fare display aligned on right  -->
+	<TextView
+		xmlns:android="http://schemas.android.com/apk/res/android"
+   		android:id="@+id/favoriteFareText"
+   		android:layout_width="wrap_content"
+   		android:layout_height="fill_parent"
+   		android:layout_alignParentRight="true"
+   		android:text="Fare" />
+	<TextView
+   		xmlns:android="http://schemas.android.com/apk/res/android"
+   		android:id="@+id/favoriteFare"
+   		android:layout_width="wrap_content"
+   		android:layout_height="fill_parent"
+   		android:layout_alignParentRight="true"
+   		android:layout_below="@+id/favoriteFareText"
+   		android:textSize="24sp"/>
+	
+
+</RelativeLayout>

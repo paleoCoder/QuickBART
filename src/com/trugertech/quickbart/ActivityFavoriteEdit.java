@@ -57,6 +57,8 @@ public class ActivityFavoriteEdit extends Activity{
                 // check to insure two different stations are selected
             	if(spinDepart.getSelectedItemPosition() != spinDest.getSelectedItemPosition()){
             		setResult(RESULT_OK);
+            		//TODO: pass spinner IDs
+            		saveFavorite(spinDepart.getSelectedItemPosition(), spinDest.getSelectedItemPosition());
             		finish();
             	}
             	else{
@@ -157,15 +159,16 @@ public class ActivityFavoriteEdit extends Activity{
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        saveState();
+//        saveState();
         outState.putSerializable(QuickBartDbAdapter.KEY_ROWID, mRowId);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        saveState();
-    }
+//    Removed since to resolve bug - item saved whithout save button being pressed
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        saveState();
+//    }
 
     @Override
     protected void onResume() {
@@ -177,32 +180,32 @@ public class ActivityFavoriteEdit extends Activity{
      * Saves the current state of the edit view. If the currently displayed
      * favorite is new then save, else it already exists and update.
      */
-    private void saveState() {
-    	Spinner spinDepart = (Spinner) findViewById(R.id.spinDepart);
-        Spinner spinDest = (Spinner) findViewById(R.id.spinDestination);
+    private void saveFavorite(int stationDepartID, int stationDestinationID) {
+//    	Spinner spinDepart = (Spinner) findViewById(R.id.spinDepart);
+//        Spinner spinDest = (Spinner) findViewById(R.id.spinDestination);
         
         //if there isn't an existing favorite that is being displayed create it
         if (mRowId == null) {
             long id = mDbHelper.createFavorite(
-            		stations[0][spinDepart.getSelectedItemPosition()] +
+            		stations[0][stationDepartID] +
             			" to " + 
-            			stations[0][spinDest.getSelectedItemPosition()],
-            		stations[1][spinDepart.getSelectedItemPosition()], 
-            		stations[0][spinDepart.getSelectedItemPosition()], 
-            		stations[1][spinDest.getSelectedItemPosition()], 
-            		stations[0][spinDest.getSelectedItemPosition()]);
+            			stations[0][stationDestinationID],
+            		stations[1][stationDepartID], 
+            		stations[0][stationDepartID], 
+            		stations[1][stationDestinationID], 
+            		stations[0][stationDestinationID]);
             if (id > 0) {
                 mRowId = id;
             }
         } else { // update the existing favorite that is being displayed
             mDbHelper.updateFavorite(mRowId,
-            		stations[0][spinDepart.getSelectedItemPosition()] +
+            		stations[0][stationDepartID] +
         			" to " + 
-        			stations[0][spinDest.getSelectedItemPosition()],
-            		stations[1][spinDepart.getSelectedItemPosition()], 
-            		stations[0][spinDepart.getSelectedItemPosition()], 
-            		stations[1][spinDest.getSelectedItemPosition()], 
-            		stations[0][spinDest.getSelectedItemPosition()]);
+        			stations[0][stationDestinationID],
+            		stations[1][stationDepartID], 
+            		stations[0][stationDepartID], 
+            		stations[1][stationDestinationID], 
+            		stations[0][stationDestinationID]);
         }
     }
 

@@ -30,7 +30,7 @@ public class FavoriteTripLegAdapter extends ArrayAdapter<FavoriteTripLeg> {
 		}
 		FavoriteTripLeg leg = legs.get(position);
 		if(leg != null){
-			TextView transfers = (TextView) v.findViewById(R.id.detailsTransfers);
+//			TextView transfers = (TextView) v.findViewById(R.id.detailsTransfers);
 			TextView platform = (TextView) v.findViewById(R.id.detailsPlatformInfo);
 			TextView departTxt = (TextView) v.findViewById(R.id.detailsDepartText);
 			TextView departInfo = (TextView) v.findViewById(R.id.detailsDepartInfo);
@@ -39,7 +39,7 @@ public class FavoriteTripLegAdapter extends ArrayAdapter<FavoriteTripLeg> {
 			
 			//if there is a transfer code set notification
 			if(leg.getTransferCode().equals("")){
-				transfers.setVisibility(View.GONE);
+//				transfers.setVisibility(View.GONE);
 			}
 			
 			platform.setText(leg.getTrainHeadStation());

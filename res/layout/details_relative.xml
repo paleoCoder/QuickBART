@@ -30,7 +30,7 @@
 		android:id="@+id/detailsPlatformInfo"
 		android:textSize="18sp"
 		android:layout_width="wrap_content"
-		android:layout_height="fill_parent"
+		android:layout_height="wrap_content"
 		android:layout_below="@+id/detailsTransfers"
 		android:layout_toRightOf="@+id/detailsPlatformText" />
 		
@@ -47,7 +47,7 @@
 		android:id="@+id/detailsDepartInfo"
 		android:textSize="18sp"
 		android:layout_width="wrap_content"
-		android:layout_height="fill_parent" 
+		android:layout_height="wrap_content" 
 		android:layout_below="@+id/detailsPlatformInfo"
 		android:layout_toRightOf="@+id/detailsDepartText" />
 		
@@ -64,7 +64,7 @@
 		android:id="@+id/detailsDestInfo"
 		android:textSize="18sp"
 		android:layout_width="wrap_content"
-		android:layout_height="fill_parent" 
+		android:layout_height="wrap_content" 
 		android:layout_below="@+id/detailsDepartText"
 		android:layout_toRightOf="@+id/detailsDestText"/>
 

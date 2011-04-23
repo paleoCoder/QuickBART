@@ -57,7 +57,6 @@ public class ActivityFavoriteEdit extends Activity{
                 // check to insure two different stations are selected
             	if(spinDepart.getSelectedItemPosition() != spinDest.getSelectedItemPosition()){
             		setResult(RESULT_OK);
-            		//TODO: pass spinner IDs
             		saveFavorite(spinDepart.getSelectedItemPosition(), spinDest.getSelectedItemPosition());
             		finish();
             	}

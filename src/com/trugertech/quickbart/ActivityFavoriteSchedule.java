@@ -14,10 +14,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 
 /**
  * Displays the selected favorite schedule. The name of the favorite 
@@ -31,6 +35,10 @@ import android.widget.Toast;
 public class ActivityFavoriteSchedule extends ListActivity{
 	
 	private static final int ACTIVITY_DETAILS = 10;
+	private static final int ACTIVITY_EDIT = 11;
+	
+	private static final int EDIT_ID = Menu.FIRST;
+	private static final int DELETE_ID = Menu.FIRST + 1;
 	
 	private QuickBartDbAdapter mDbHelper;
 	private Long mRowId;
@@ -62,6 +70,48 @@ public class ActivityFavoriteSchedule extends ListActivity{
         
         populateSchedule();
     }
+	
+	/**
+	 * Menu items for Edit and Delete the currently displayed favorite
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		menu.add(Menu.NONE, EDIT_ID, Menu.NONE, R.string.menu_favorites_edit);
+		menu.add(Menu.NONE, DELETE_ID, Menu.NONE, R.string.menu_favorites_delete);
+		return true;
+	}
+	
+	
+	/**
+     * Sets menu action to create a favorite when selected
+     */
+    @Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		
+    	boolean result = super.onOptionsItemSelected(item);
+		
+		FavoriteRouteAdapter info;
+    	
+        switch(item.getItemId()) {
+            case EDIT_ID:
+            	info = (FavoriteRouteAdapter) this.getListAdapter();
+            	Intent i = new Intent(this, ActivityFavoriteEdit.class);
+            	i.putExtra(QuickBartDbAdapter.KEY_ROWID, info.getFavoriteId());
+               	startActivityForResult(i, ACTIVITY_EDIT);
+               	return true;
+                
+            case DELETE_ID:
+            	info = (FavoriteRouteAdapter) this.getListAdapter();
+                mDbHelper.deleteFavorite(info.getFavoriteId());
+                setResult(RESULT_OK);
+                finish();
+                return true;
+            	
+        }
+        
+        return result;
+	}
 	
 	/**
 	 * When a specific schedule is clicked display the details for that schedule
@@ -105,7 +155,7 @@ public class ActivityFavoriteSchedule extends ListActivity{
             
             // set layout attributes with Schedule Item values
             FavoriteRouteAdapter favAdapter = new FavoriteRouteAdapter(
-            		this, R.layout.favorite_schedule_item, favRoute);
+            		this, R.layout.favorite_schedule_item, favRoute, mRowId);
             setListAdapter(favAdapter);
             
             //Set the favorite name that is being displayed

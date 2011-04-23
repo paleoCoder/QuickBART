@@ -13,12 +13,14 @@ public class FavoriteRouteAdapter extends ArrayAdapter<FavoriteRoute> {
 	
 	private ArrayList<FavoriteRoute> routes;
 	private Context mContext;
+	private Long favoriteId;
 	
 	public FavoriteRouteAdapter(Context context, int textViewResourceID, 
-			ArrayList<FavoriteRoute> routes){
+			ArrayList<FavoriteRoute> routes, Long favoriteId){
 		super(context, textViewResourceID, routes);
 		this.routes = routes;
 		this.mContext = context;
+		this.favoriteId = favoriteId;
 	}
 
 	@Override
@@ -41,6 +43,13 @@ public class FavoriteRouteAdapter extends ArrayAdapter<FavoriteRoute> {
 		return v;
 	}
 	
+	/**
+	 * Gets the ID of the favorite route.
+	 * @return
+	 */
+	public Long getFavoriteId(){
+		return this.favoriteId;
+	}
 	
 
 }

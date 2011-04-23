@@ -88,7 +88,7 @@ public class ActivityQuickBart extends ListActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        menu.add(0, INSERT_ID, 0, R.string.menu_favorites_insert);
+        menu.add(Menu.NONE, INSERT_ID, Menu.NONE, R.string.menu_favorites_insert);
         return true;
     }
 
@@ -115,8 +115,8 @@ public class ActivityQuickBart extends ListActivity {
     public void onCreateContextMenu(ContextMenu menu, View v,
             ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        menu.add(0, EDIT_ID, 0, R.string.menu_favorites_edit);
-        menu.add(0, DELETE_ID, 1, R.string.menu_favorites_delete);
+        menu.add(Menu.NONE, EDIT_ID, Menu.FIRST, R.string.menu_favorites_edit);
+        menu.add(Menu.NONE, DELETE_ID, Menu.FIRST+1, R.string.menu_favorites_delete);
     }
 
     /**
@@ -125,13 +125,16 @@ public class ActivityQuickBart extends ListActivity {
      */
     @Override
     public boolean onContextItemSelected(MenuItem item) {
+    	
     	AdapterContextMenuInfo info;
+    	
     	switch(item.getItemId()) {
             case DELETE_ID:
                 info = (AdapterContextMenuInfo) item.getMenuInfo();
                 mDbHelper.deleteFavorite(info.id);
                 fillData();
                 return true;
+            
             case EDIT_ID:
             	info = (AdapterContextMenuInfo) item.getMenuInfo();
             	Intent i = new Intent(this, ActivityFavoriteEdit.class);
@@ -139,7 +142,8 @@ public class ActivityQuickBart extends ListActivity {
                	startActivityForResult(i, ACTIVITY_EDIT);
                	return true;
         }
-        return super.onContextItemSelected(item);
+        
+    	return super.onContextItemSelected(item);
     }
 
     /**

@@ -15,8 +15,6 @@ import org.xml.sax.helpers.DefaultHandler;
 import android.util.Log;
 
 public class BartAPI_cmd_stn extends DefaultHandler {
-
-	public static int BART_STATION_NUMBER = 50;
 	
     private String currentNode = null;
 
@@ -36,8 +34,8 @@ public class BartAPI_cmd_stn extends DefaultHandler {
     String[][] getResults()
     {
     	
-    	String[][] ret = { 	nameList.toArray(new String[BART_STATION_NUMBER]), 
-    						abbrList.toArray(new String[BART_STATION_NUMBER]) };
+    	String[][] ret = { 	nameList.toArray(new String[nameList.size()]), 
+    						abbrList.toArray(new String[abbrList.size()]) };
     	return ret;
     }
     

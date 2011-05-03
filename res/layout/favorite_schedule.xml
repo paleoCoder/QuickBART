@@ -13,11 +13,22 @@
         	android:paddingBottom="4px"
         	android:textSize="24sp">
        	</TextView>
+       	
+       	<TextView
+       		android:id="@+id/routeFare"
+       		android:layout_width="wrap_content"
+       		android:layout_height="wrap_content"
+       		android:paddingBottom="4px"
+       		android:textSize="18sp">
+     	</TextView>
         
-        <View android:id="@+id/horizontalLine"
-         android:layout_height="1dip"
-         android:layout_width="fill_parent"
-         android:background="@color/horizontal_line"></View>
+        <View 
+        	android:id="@+id/horizontalLine"
+         	android:layout_height="1dip"
+         	android:layout_width="fill_parent"
+         	android:background="@color/horizontal_line"
+         	android:paddingBottom="4sp">
+       	</View>
        	
       	<ListView
        		android:id="@+id/android:list"

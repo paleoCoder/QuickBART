@@ -160,6 +160,10 @@ public class ActivityFavoriteSchedule extends ListActivity{
             TextView tvFavName = (TextView)findViewById(R.id.favName);
             tvFavName.setText(favName);
             
+            //set the route fare
+            TextView tvFavFare = (TextView)findViewById(R.id.routeFare);
+            tvFavFare.setText("Fare: " + favRoute.get(0).getFare());
+            
         }
         else{
         	//TODO: Toast that there was no route selected. Go back to main screen

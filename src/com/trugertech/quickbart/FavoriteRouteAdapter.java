@@ -34,11 +34,11 @@ public class FavoriteRouteAdapter extends ArrayAdapter<FavoriteRoute> {
 		if(fav != null){
 			TextView tvDepart = (TextView) v.findViewById(R.id.favoriteInfoDepart);
 			TextView tvDest = (TextView) v.findViewById(R.id.favoriteInfoDest);
-			TextView tvFare = (TextView) v.findViewById(R.id.favoriteFare);
+//			TextView tvFare = (TextView) v.findViewById(R.id.favoriteFare);
 			
 			tvDepart.setText(fav.getOriginTime());
 			tvDest.setText(fav.getDestinationTime());
-			tvFare.setText(fav.getFare());
+//			tvFare.setText(fav.getFare());
 		}
 		return v;
 	}

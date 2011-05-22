@@ -1,8 +1,5 @@
 package com.trugertech.quickbart;
 
-import com.trugertech.quickbart.ActivityFavoriteEdit;
-import com.trugertech.quickbart.QuickBartDbAdapter;
-
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -28,7 +25,7 @@ import android.widget.SimpleCursorAdapter;
  * @author scott
  *
  */
-public class ActivityQuickBart extends ListActivity {
+public class ActivityQuickBart extends ListActivity  {
     private static final int ACTIVITY_CREATE=0;
     private static final int ACTIVITY_EDIT=1;
     private static final int ACTIVITY_DISPLAY=2;
@@ -53,6 +50,10 @@ public class ActivityQuickBart extends ListActivity {
         }
         fillData();
         registerForContextMenu(getListView());
+        
+        //set touch listener for swipe
+        getListView().setOnTouchListener(null);
+        
     }
     
     /**
@@ -81,8 +82,8 @@ public class ActivityQuickBart extends ListActivity {
     	}
     	
     }
-    
-    /**
+
+	/**
      * Creates the menu dialog to create a favorite
      */
     @Override

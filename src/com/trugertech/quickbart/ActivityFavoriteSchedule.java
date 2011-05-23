@@ -34,9 +34,11 @@ public class ActivityFavoriteSchedule extends ListActivity{
 	
 	private static final int ACTIVITY_DETAILS = 10;
 	private static final int ACTIVITY_EDIT = 11;
+	private static final int ACTIVITY_INFO = 12;
 	
 	private static final int EDIT_ID = Menu.FIRST;
 	private static final int DELETE_ID = Menu.FIRST + 1;
+	private static final int INFO_ID = Menu.FIRST + 2;
 	
 	private QuickBartDbAdapter mDbHelper;
 	private Long mRowId;
@@ -75,8 +77,9 @@ public class ActivityFavoriteSchedule extends ListActivity{
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		menu.add(Menu.NONE, EDIT_ID, Menu.NONE, R.string.menu_favorites_edit);
-		menu.add(Menu.NONE, DELETE_ID, Menu.NONE, R.string.menu_favorites_delete);
+		menu.add(Menu.NONE, EDIT_ID, Menu.NONE, R.string.menu_favorites_edit).setIcon(R.drawable.ic_menu_edit);
+		menu.add(Menu.NONE, DELETE_ID, Menu.NONE, R.string.menu_favorites_delete).setIcon(R.drawable.ic_menu_delete);
+		menu.add(Menu.NONE, INFO_ID, Menu.NONE, R.string.menu_info).setIcon(R.drawable.ic_menu_info);
 		return true;
 	}
 	
@@ -90,11 +93,12 @@ public class ActivityFavoriteSchedule extends ListActivity{
     	boolean result = super.onOptionsItemSelected(item);
 		
 		FavoriteRouteAdapter info;
+		Intent i;
     	
         switch(item.getItemId()) {
             case EDIT_ID:
             	info = (FavoriteRouteAdapter) this.getListAdapter();
-            	Intent i = new Intent(this, ActivityFavoriteEdit.class);
+            	i = new Intent(this, ActivityFavoriteEdit.class);
             	i.putExtra(QuickBartDbAdapter.KEY_ROWID, info.getFavoriteId());
                	startActivityForResult(i, ACTIVITY_EDIT);
                	return true;
@@ -105,6 +109,11 @@ public class ActivityFavoriteSchedule extends ListActivity{
                 setResult(RESULT_OK);
                 finish();
                 return true;
+            
+            case INFO_ID:
+            	i = new Intent(this, ActivityDisplayInfo.class);
+            	startActivityForResult(i, ACTIVITY_INFO);
+            	return true;
             	
         }
         

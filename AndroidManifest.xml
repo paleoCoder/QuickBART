@@ -19,6 +19,7 @@
         <activity android:name="ActivityFavoriteEdit"></activity>
         <activity android:name="ActivityFavoriteSchedule"></activity>
         <activity android:name="ActivityFavoriteDetails"></activity>
+        <activity android:name="ActivityDisplayInfo"></activity>
  
     </application>
 </manifest>

@@ -2,18 +2,20 @@
 <resources>
     <string name="app_name">QuickBART</string>
     <string name="no_favorites">There are no favorites. Please press menu and add a favorite.</string>
-    <string name="menu_favorites_insert">Add Favorite</string>
-    <string name="menu_favorites_delete">Delete Favorite</string>
-    <string name="edit_name">Edit a Favorite</string>
+    <string name="menu_favorites_insert">Add</string>
+    <string name="menu_favorites_delete">Delete</string>
+    <string name="menu_favorites_edit">Edit</string><string name="menu_info">Info</string><string name="edit_name">Edit a Favorite</string>
     <string name="edit_text_depart">Departure Station</string>
     <string name="edit_text_destination">Destination Station</string>
     <string name="edit_text_button">Save</string>
     <string name="schedule_name">Display Favorite</string>
     <string name="no_FavoritInfo">No route information found</string>
     <string name="favorite_schedule_dest">Arrive</string><string name="favorite_schedule_depart">Depart</string>
-    <color name="horizontal_line">#FFFFFF</color>
-    <string name="menu_favorites_edit">Edit Favorite</string>
+    
+    
     <string name="details_transfer_text">This route requires train transfers to reach the destination</string>
-    <string name="no_DetailInfo">There is no detail information to display</string>
+    <string name="no_DetailInfo">There is no detail information to display</string><color name="horizontal_line">#FFFFFF</color>
+    <string name="info_btn_text">Done</string>
+    
     
 </resources>

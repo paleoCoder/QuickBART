@@ -22,7 +22,7 @@ public class ActivityDisplayInfo extends Activity {
 			"your favorite routes.</p>" +
 			"<p>QuickBART is in constant development." +
 			"If you have any issues or would like to requset a feature please " +
-			"<a href=\"mailto:quickbart@truger.net?Subject=Re:QuickBART\">email me.</a>" +
+			"<a href=\"mailto:android@truger.net?Subject=Re:QuickBART\">email me.</a>" +
 			"</p>";
 		
 		try{

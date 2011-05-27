@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout 
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
-    
-    <TextView 
+<LinearLayout 
+    	xmlns:android="http://schemas.android.com/apk/res/android" 
+    	android:orientation="vertical" 
+    	android:id="@+id/linearLayout1" 
+    	android:layout_height="fill_parent" 
+    	android:layout_width="fill_parent">
+    	
+   	<TextView 
     	android:id="@+id/tvDepart"
     	android:layout_width="wrap_content" 
     	android:layout_height="wrap_content"
@@ -17,7 +19,6 @@
     <Spinner 
     	android:layout_width="fill_parent" 
     	android:layout_height="wrap_content" 
-    	android:layout_below = "@+id/tvDepart"
     	android:id="@+id/spinDepart">
    	</Spinner>
     
@@ -25,7 +26,6 @@
     	android:id="@+id/tvDestination" 
     	android:layout_width="wrap_content" 
     	android:layout_height="wrap_content"
-    	android:layout_below="@+id/spinDepart"
     	android:layout_marginTop="20dp"
     	android:textSize="18sp"
     	android:text="@string/edit_text_destination">
@@ -33,7 +33,6 @@
     <Spinner 
     	android:layout_height="wrap_content" 
     	android:layout_width="fill_parent" 
-    	android:layout_below="@+id/tvDestination"
     	android:id="@+id/spinDestination" >
     </Spinner>
     
@@ -41,7 +40,6 @@
     	android:id="@+id/tvSaveReturnTrip" 
     	android:layout_width="wrap_content" 
     	android:layout_height="wrap_content"
-    	android:layout_below="@+id/spinDestination"
     	android:layout_marginTop="20dp"
     	android:textSize="18sp"
     	android:text="@string/edit_text_saveReturnTrip">
@@ -51,23 +49,17 @@
    		android:id="@+id/chkSaveReturnTrip"
    		android:layout_width="wrap_content" 
     	android:layout_height="wrap_content"
-    	android:layout_below="@+id/spinDestination"
-    	android:layout_margin="20dp"
-    	android:layout_toRightOf="@+id/tvSaveReturnTrip"
-    	
     	/>
    	
     <Button
     	android:id="@+id/btnFavoriteSave" 
-    	android:layout_width="120dp" 
+    	android:layout_width="140dp" 
     	android:layout_height="wrap_content"
-    	android:layout_below="@+id/tvSaveReturnTrip"
-    	android:layout_centerHorizontal="true"
-    	android:layout_margin="40dp"
+    	android:layout_gravity="center_horizontal"
+    	android:layout_marginTop="20dp"
     	android:textSize="18sp"
     	android:text="@string/edit_text_button">
    	</Button>
-   	
-    
+    	
 
-</RelativeLayout>
+</LinearLayout>

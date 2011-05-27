@@ -10,6 +10,8 @@
     	android:layout_width="wrap_content" 
     	android:layout_height="wrap_content"
     	android:layout_alignParentTop = "true"
+    	android:layout_marginTop="20dp"
+    	android:textSize="18sp"
     	android:text="@string/edit_text_depart">
    	</TextView>
     <Spinner 
@@ -18,11 +20,14 @@
     	android:layout_below = "@+id/tvDepart"
     	android:id="@+id/spinDepart">
    	</Spinner>
+    
     <TextView
     	android:id="@+id/tvDestination" 
     	android:layout_width="wrap_content" 
     	android:layout_height="wrap_content"
     	android:layout_below="@+id/spinDepart"
+    	android:layout_marginTop="20dp"
+    	android:textSize="18sp"
     	android:text="@string/edit_text_destination">
    	</TextView>
     <Spinner 
@@ -31,14 +36,38 @@
     	android:layout_below="@+id/tvDestination"
     	android:id="@+id/spinDestination" >
     </Spinner>
+    
+    <TextView
+    	android:id="@+id/tvSaveReturnTrip" 
+    	android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content"
+    	android:layout_below="@+id/spinDestination"
+    	android:layout_marginTop="20dp"
+    	android:textSize="18sp"
+    	android:text="@string/edit_text_saveReturnTrip">
+   	</TextView>
+   	
+   	<CheckBox
+   		android:id="@+id/chkSaveReturnTrip"
+   		android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content"
+    	android:layout_below="@+id/spinDestination"
+    	android:layout_margin="20dp"
+    	android:layout_toRightOf="@+id/tvSaveReturnTrip"
+    	
+    	/>
+   	
     <Button
     	android:id="@+id/btnFavoriteSave" 
-    	android:layout_width="fill_parent" 
+    	android:layout_width="120dp" 
     	android:layout_height="wrap_content"
-    	android:layout_alignParentBottom = "true"
-    	android:layout_centerHorizontal = "true"
+    	android:layout_below="@+id/tvSaveReturnTrip"
+    	android:layout_centerHorizontal="true"
+    	android:layout_margin="40dp"
+    	android:textSize="18sp"
     	android:text="@string/edit_text_button">
    	</Button>
+   	
     
 
 </RelativeLayout>

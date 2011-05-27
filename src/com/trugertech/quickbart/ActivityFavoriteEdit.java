@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -53,11 +54,12 @@ public class ActivityFavoriteEdit extends Activity{
             public void onClick(View view) {
             	Spinner spinDepart = (Spinner) findViewById(R.id.spinDepart);
                 Spinner spinDest = (Spinner) findViewById(R.id.spinDestination);
+                CheckBox chkReturnTrip = (CheckBox) findViewById(R.id.chkSaveReturnTrip);
                 
                 // check to insure two different stations are selected
             	if(spinDepart.getSelectedItemPosition() != spinDest.getSelectedItemPosition()){
             		setResult(RESULT_OK);
-            		saveFavorite(spinDepart.getSelectedItemPosition(), spinDest.getSelectedItemPosition());
+            		saveFavorite(spinDepart.getSelectedItemPosition(), spinDest.getSelectedItemPosition(), chkReturnTrip.isChecked());
             		finish();
             	}
             	else{
@@ -136,7 +138,7 @@ public class ActivityFavoriteEdit extends Activity{
      * in the station array
      * @param String destination station long name
      * @param String departure station long name
-     * @return int[] = {destination index, departure index}
+     * @return integer array {destination index, departure index}
      */
     private int[] getFavoriteStationsIndex(String dest, String depart){
         int favIndex = 0;
@@ -162,7 +164,7 @@ public class ActivityFavoriteEdit extends Activity{
         outState.putSerializable(QuickBartDbAdapter.KEY_ROWID, mRowId);
     }
 
-//    Removed since to resolve bug - item saved whithout save button being pressed
+//    Removed since to resolve bug - item saved with out save button being pressed
 //    @Override
 //    protected void onPause() {
 //        super.onPause();
@@ -177,9 +179,10 @@ public class ActivityFavoriteEdit extends Activity{
 
     /***
      * Saves the current state of the edit view. If the currently displayed
-     * favorite is new then save, else it already exists and update.
+     * favorite is new then save, else it already exists and update. If true for
+     * saveReturnTrip the opposite trip is saved too
      */
-    private void saveFavorite(int stationDepartID, int stationDestinationID) {
+    private void saveFavorite(int stationDepartID, int stationDestinationID, boolean saveReturnTrip) {
 //    	Spinner spinDepart = (Spinner) findViewById(R.id.spinDepart);
 //        Spinner spinDest = (Spinner) findViewById(R.id.spinDestination);
         
@@ -206,7 +209,36 @@ public class ActivityFavoriteEdit extends Activity{
             		stations[1][stationDestinationID], 
             		stations[0][stationDestinationID]);
         }
+        
+        //save return trip
+        if (saveReturnTrip){
+        	mDbHelper.createFavorite(
+	    		stations[0][stationDestinationID] +
+	    			" to " + 
+	    			stations[0][stationDepartID],
+	    		stations[1][stationDestinationID], 
+	    		stations[0][stationDestinationID], 
+	    		stations[1][stationDepartID], 
+	    		stations[0][stationDepartID]);
+        }
     }
 
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

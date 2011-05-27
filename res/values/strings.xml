@@ -16,6 +16,7 @@
     <string name="details_transfer_text">This route requires train transfers to reach the destination</string>
     <string name="no_DetailInfo">There is no detail information to display</string><color name="horizontal_line">#FFFFFF</color>
     <string name="info_btn_text">Done</string>
+    <string name="edit_text_saveReturnTrip">Add the return trip</string>
     
     
 </resources>

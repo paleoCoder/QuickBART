@@ -11,18 +11,18 @@ public class ActivityDisplayInfo extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
 			
 		PackageInfo manager;
+		TextView tvTitle;
+		TextView tvInfo;
 		
 		String info = 
-			"<h1>QuickBART</h1>" +
-			"<h2>Quick Bay Area Rapid Transit Routing Tool</h2>" +
+			"<p>Quick Bay Area Rapid Transit Routing Tool</p>" +
 			"<p>QuickBART was created to be a simple app to provide quick access to " +
 			"your favorite routes.</p>" +
-			"<p>QuickBART is in constant development." +
+			"<p>QuickBART is in constant development. " +
 			"If you have any issues or would like to requset a feature please " +
-			"<a href=\"mailto:android@truger.net?Subject=Re:QuickBART\">email me.</a>" +
+			"<a href=\"mailto:android@truger.net?subject=Re:QuickBART\">email me.</a>" +
 			"</p>";
 		
 		try{
@@ -39,10 +39,13 @@ public class ActivityDisplayInfo extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.info);
 		
-		TextView vw = (TextView)findViewById(R.id.textInfo);
-		vw.setText(Html.fromHtml(info));
+		tvTitle = (TextView)findViewById(R.id.textTitle);
+		tvTitle.setText("QuickBART");
 		
-		vw.setMovementMethod(LinkMovementMethod.getInstance());
+		tvInfo = (TextView)findViewById(R.id.textInfo);
+		tvInfo.setText(Html.fromHtml(info));
+		
+		tvInfo.setMovementMethod(LinkMovementMethod.getInstance());
 
 	}
 

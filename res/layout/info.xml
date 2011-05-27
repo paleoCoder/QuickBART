@@ -1,21 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
     <LinearLayout 
     	xmlns:android="http://schemas.android.com/apk/res/android" 
-    	android:orientation="vertical" android:id="@+id/linearLayout1" 
-    	android:layout_height="fill_parent" android:layout_width="fill_parent">
-        
-        <ImageView 
+    	android:orientation="vertical" 
+    	android:id="@+id/linearLayout1" 
+    	android:layout_height="fill_parent" 
+    	android:layout_width="fill_parent">
+	    	
+    	<ImageView 
         	android:layout_height="wrap_content" 
         	android:src="@drawable/ic_launcher" 
-        	android:id="@+id/logo" 
+        	android:id="@+id/logo"
+        	android:paddingTop="20dp" 
         	android:layout_width="wrap_content">
        	</ImageView>
+       	
+       	<TextView  
+        	android:id="@+id/textTitle" 
+        	android:layout_width="fill_parent" 
+        	android:layout_height="wrap_content"
+        	android:paddingTop="10dp"
+        	android:paddingBottom="10dp"
+        	android:gravity="center_horizontal"
+        	android:textSize="24sp"
+        	android:textStyle="bold">
+       	</TextView>
         
         <TextView  
         	android:id="@+id/textInfo" 
         	android:layout_width="wrap_content" 
-        	android:layout_height="wrap_content">
+        	android:layout_height="fill_parent"
+        	android:textSize="18sp">
        	</TextView>
+        
+        
        		
     </LinearLayout>
 

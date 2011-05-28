@@ -20,6 +20,7 @@
         <activity android:name="ActivityFavoriteSchedule"></activity>
         <activity android:name="ActivityFavoriteDetails"></activity>
         <activity android:name="ActivityDisplayInfo"></activity>
+        <activity android:name="ActivityPlanner"></activity>
  
     </application>
 </manifest>

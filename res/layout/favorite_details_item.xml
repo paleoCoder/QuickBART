@@ -18,7 +18,7 @@
 				android:id="@+id/detailsPlatformInfo"
 				android:layout_width="wrap_content"
 				android:layout_height="fill_parent"
-				android:textSize="18sp"/>
+				android:textSize="24sp"/>
 	   	</TableRow>
 	   	<TableRow>
 		   	<!--  Departure info -->
@@ -32,7 +32,7 @@
 				android:id="@+id/detailsDepartInfo"
 				android:layout_width="wrap_content"
 				android:layout_height="fill_parent"
-				android:textSize="18sp"/>
+				android:textSize="24sp"/>
 	   	</TableRow>
 	   	<TableRow>
 		   	<!--  arrival info -->
@@ -47,7 +47,7 @@
 				android:id="@+id/detailsDestInfo"
 				android:layout_width="wrap_content"
 				android:layout_height="fill_parent"
-				android:textSize="18sp"/>	
+				android:textSize="24sp"/>	
 	   	</TableRow>   	
 	</TableLayout>
 

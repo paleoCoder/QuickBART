@@ -12,5 +12,4 @@ and arrival time at the destination station. Clicking on one of the routes
 will display the details for that route including the fare and if transfers
 are required.
 
-In the Android Market: 
-[[https://market.android.com/details?id=com.trugertech.quickbart&feature=search_result]]
+In the [Android Market] (https://market.android.com/details?id=com.trugertech.quickbart&feature=search_result "QuickBART")

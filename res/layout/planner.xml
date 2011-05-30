@@ -6,18 +6,20 @@ See the file COPYING.txt for copying permissions
 <LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
+  android:layout_height="fill_parent"
+  android:orientation="vertical">
+  
   
 	<!-- Departure Station  -->
 	<TextView
 		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="fill_parent"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:id="@+id/planner_txtDeparture" />
 	
 	<Spinner
 		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="fill_parent"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:id="@+id/planner_spinnerDeparture" />
 	
@@ -30,32 +32,45 @@ See the file COPYING.txt for copying permissions
 
 	<Spinner
 		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="fill_parent"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:id="@+id/planner_spinnerDestination" />
 		
 	<!--  Date selection -->
-	<TextView
+	<RadioGroup
 		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="fill_parent"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:id="@+id/planner_txtDate" />
-	<TimePicker
+		android:orientation="horizontal">
+		<RadioButton
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/planner_rdTimeDepart" />
+		<RadioButton
+			xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/planner_rdTimeArrive" />
+	</RadioGroup>
+	<Button
 		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="fill_parent"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:id="@+id/planner_timePicker" />
+		android:id="@+id/planner_btnTimeChange" /> 
 		
 	<!--  Time Selection -->
-	<TextView
+	<Button
 		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="fill_parent"
+		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:id="@+id/planner_txtTime" />
-  	<DatePicker
-  		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:id="@+id/planner_datePicker" />
+		android:id="@+id/planner_btnDateChange" />	
 		
+	<!-- Submit button -->
+	<Button
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/planner_btnSubmit" />	
+			
 </LinearLayout>

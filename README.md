@@ -13,3 +13,6 @@ will display the details for that route including the fare and if transfers
 are required.
 
 In the [Android Market] (https://market.android.com/details?id=com.trugertech.quickbart&feature=search_result "QuickBART")
+
+QuickBART is licensed for reuse under the MIT License. See COPYING.txt for
+the license text.

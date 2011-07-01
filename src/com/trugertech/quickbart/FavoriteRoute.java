@@ -27,7 +27,7 @@ public class FavoriteRoute {
 		
 	
 	/**
-	 * 
+	 * Class to provide data container for Favorite Routes for BART
 	 */
 	protected FavoriteRoute() {
 		this.fare = "";

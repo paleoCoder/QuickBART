@@ -27,6 +27,7 @@ See the file COPYING.txt for copying permissions
         <activity android:name="ActivityFavoriteDetails"></activity>
         <activity android:name="ActivityDisplayInfo"></activity>
         <activity android:name="ActivityPlanner"></activity>
+        <activity android:name="ActivityPlannerSchedule"></activity>
  
     </application>
 </manifest>

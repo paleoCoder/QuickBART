@@ -6,7 +6,6 @@
 package com.trugertech.quickbart;
 
 import android.app.Activity;
-import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 public class ActivityFavoriteEdit extends Activity{
 	
@@ -34,7 +32,6 @@ public class ActivityFavoriteEdit extends Activity{
         	System.out.print(e.getMessage().toString());
         }
         
-
         //set the display
         setContentView(R.layout.favorite_edit);
         setTitle(R.string.edit_name);
@@ -47,10 +44,6 @@ public class ActivityFavoriteEdit extends Activity{
 			mRowId = extras != null ? extras.getLong(QuickBartDbAdapter.KEY_ROWID)
 									: null;
 		}
-        
-		// gets the station listings
-        populateFields();
-
         
         //sets the button save actions
         Button btnSave = (Button) findViewById(R.id.btnFavoriteSave);
@@ -69,11 +62,8 @@ public class ActivityFavoriteEdit extends Activity{
             	}
             	else{
                 	//display a message to select different stations
-                	Context context = getApplicationContext();
                 	CharSequence text = "Both selections cannot be the same station. Please select at least one different station.";
-                	int duration = Toast.LENGTH_LONG;
-                	
-                	Toast.makeText(context, text, duration).show();
+                	ActivityHelper.showToastMessage(text, true, getApplicationContext());
             	}
                 
             }
@@ -94,14 +84,8 @@ public class ActivityFavoriteEdit extends Activity{
     			stations = BartAPI_cmd_stn.getStations();
     		}
         	catch(Exception e){
-        		Context context = getApplicationContext();
-        		CharSequence text = "Sorry there was an error accessing BART information. Please try again.";
-        		// TODO: for debugging, remove next line
-        		text = e.getMessage();
-        		int duration = Toast.LENGTH_LONG;
-
-        		Toast toast = Toast.makeText(context, text, duration);
-        		toast.show();
+        		setResult(RESULT_CANCELED);
+        		finish();
         	}
         }
     	

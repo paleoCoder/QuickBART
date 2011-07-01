@@ -11,6 +11,11 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.widget.TabHost;
 
+/**
+ * Main activity for QuickBART. Displays the Tabs for selecting activities.
+ * @author scott
+ *
+ */
 public class ActivityTabMain extends TabActivity {
 
 	@Override

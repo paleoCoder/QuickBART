@@ -12,6 +12,11 @@ import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 
+/**
+ * Displays a general info page for the app.
+ * @author scott
+ *
+ */
 public class ActivityDisplayInfo extends Activity {
 
 	@Override
@@ -28,7 +33,8 @@ public class ActivityDisplayInfo extends Activity {
 			"<p>QuickBART is in constant development. " +
 			"If you have any issues or would like to requset a feature please " +
 			"<a href=\"mailto:android@truger.net?subject=Re:QuickBART\">email me.</a>" +
-			"</p>";
+			"</p>" +
+			"<p>Updates are posted on the <a href=\"http://blog.trugertech.com\">TrugerTech.com Blog</a></p>";
 		
 		try{
 			manager = getPackageManager().getPackageInfo(getPackageName(), 0);
@@ -51,6 +57,9 @@ public class ActivityDisplayInfo extends Activity {
 		tvInfo.setText(Html.fromHtml(info));
 		
 		tvInfo.setMovementMethod(LinkMovementMethod.getInstance());
+		
+		//set return code for calling activity
+		setResult(RESULT_OK);
 
 	}
 

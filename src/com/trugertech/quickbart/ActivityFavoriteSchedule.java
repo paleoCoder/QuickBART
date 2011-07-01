@@ -15,7 +15,6 @@ import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
 import android.app.ListActivity;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -24,7 +23,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Displays the selected favorite schedule. The name of the favorite 
@@ -73,7 +71,11 @@ public class ActivityFavoriteSchedule extends ListActivity{
 									: null;
 		}
         
+		//throw some data in the list
         populateSchedule();
+        
+        //everything worked, set OK for return message to main activity
+        setResult(RESULT_OK);
     }
 	
 	/**
@@ -111,6 +113,7 @@ public class ActivityFavoriteSchedule extends ListActivity{
             case DELETE_ID:
             	info = (FavoriteRouteAdapter) this.getListAdapter();
                 mDbHelper.deleteFavorite(info.getFavoriteId());
+                ActivityHelper.showToastMessage("Favorite deleted", false, getApplicationContext());
                 setResult(RESULT_OK);
                 finish();
                 return true;
@@ -118,8 +121,7 @@ public class ActivityFavoriteSchedule extends ListActivity{
             case INFO_ID:
             	i = new Intent(this, ActivityDisplayInfo.class);
             	startActivityForResult(i, ACTIVITY_INFO);
-            	return true;
-            	
+            	return true;    	
         }
         
         return result;
@@ -180,7 +182,8 @@ public class ActivityFavoriteSchedule extends ListActivity{
             
         }
         else{
-        	//TODO: Toast that there was no route selected. Go back to main screen
+        	setResult(RESULT_CANCELED);
+        	finish();
         }
     }
     
@@ -190,7 +193,6 @@ public class ActivityFavoriteSchedule extends ListActivity{
      * 
      * @param departure
      * @param destination
-     * @param favoriteRoutes
      * @return
      */
     private ArrayList<FavoriteRoute> getSchedule(String departure, String destination){
@@ -222,20 +224,13 @@ public class ActivityFavoriteSchedule extends ListActivity{
         	favoriteRoutes = bfh.getResults();	
     	}
     	catch(Exception e){
-    		Context context = getApplicationContext();
-    		CharSequence text = "Sorry there was an error accessing BART information. Please try again.";
-    		// TODO: for debugging, remove next line
-    		text = e.getMessage();
-    		int duration = Toast.LENGTH_LONG;
-
-    		Toast toast = Toast.makeText(context, text, duration);
-    		toast.show();
+    		setResult(RESULT_CANCELED);
+        	finish();
     	}	
     	
     	return favoriteRoutes;
     }
 
-    
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -246,6 +241,46 @@ public class ActivityFavoriteSchedule extends ListActivity{
     protected void onResume() {
         super.onResume();
         populateSchedule();
+    }
+    
+    /**
+     * Catch the return codes from child activities and display messages as appropriate
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        CharSequence text = "";
+        
+        //Check which activity returned and set text message
+        switch(requestCode){
+        	case ACTIVITY_DETAILS:
+        		if(resultCode != RESULT_OK){
+		    		text = "There was an error displaying the route details";
+        		}
+        		break;
+        	case ACTIVITY_EDIT:
+        		if(resultCode != RESULT_OK){
+		    		text = "There was an error editing the favorite";
+        		}
+        		else{
+        			text = "Favorite updated";
+        		}
+        		break;
+        	case ACTIVITY_INFO:
+        		if(resultCode != RESULT_OK){
+        			text = "There was an error displaying the information page";
+        		}
+        		break;
+    		default:
+    			text = "An unknown error has occured";
+    			break;
+        }
+        
+        // display on if message is set
+        if(text != ""){
+        	ActivityHelper.showToastMessage(text, true, getApplicationContext());
+        }
+        
     }
 
 }

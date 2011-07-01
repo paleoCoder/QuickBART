@@ -12,7 +12,7 @@ See the file COPYING.txt for copying permissions
     <string name="edit_text_depart">Departure Station</string>
     <string name="edit_text_destination">Destination Station</string>
     <string name="edit_text_button">Save</string>
-    <string name="schedule_name">Display Favorite</string>
+    <string name="schedule_name">Display Route</string>
     <string name="no_FavoritInfo">No route information found</string>
     <string name="favorite_schedule_dest">Arrive</string><string name="favorite_schedule_depart">Depart</string>
     

@@ -9,14 +9,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.webkit.WebView;
 
-
+/**
+ * Provides a view of the BART map in a web view
+ * @author scott
+ *
+ */
 
 public class ActivityMap extends Activity {
 	WebView mWebView;
-	
-	//TODO: to remove the title bar from the web view add this to the manifest:
-	//	<activity android:name=".HelloGoogleMaps" android:label="@string/app_name"
-	//	     android:theme="@android:style/Theme.NoTitleBar">
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

@@ -47,7 +47,8 @@ public class ActivityFavoriteDetails extends ListActivity{
 			}	
 		}
 		
-        populateTripLegs();
+		//set result for parent calling activity
+		setResult(RESULT_OK);
     }
 
 	/**
@@ -63,7 +64,9 @@ public class ActivityFavoriteDetails extends ListActivity{
             
         }
         else{
-        	//TODO: Toast that there was no route selected. Go back to main screen
+        	//this will close the activity and return to the parent with a canceled status
+        	setResult(RESULT_CANCELED);
+        	finish();
         }
     }
 

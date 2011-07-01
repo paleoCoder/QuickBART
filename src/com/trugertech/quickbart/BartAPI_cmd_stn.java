@@ -76,6 +76,7 @@ public class BartAPI_cmd_stn extends DefaultHandler {
         	}
         	
         } catch (Exception ee) {
+        	//TODO: remove logging
             Log.d("error in startElement", ee.getStackTrace().toString());
         }
     }

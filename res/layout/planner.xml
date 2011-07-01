@@ -19,7 +19,7 @@ See the file COPYING.txt for copying permissions
 	
 	<Spinner
 		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="wrap_content"
+		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/planner_spinnerDeparture" />
 	
@@ -32,7 +32,7 @@ See the file COPYING.txt for copying permissions
 
 	<Spinner
 		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="wrap_content"
+		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/planner_spinnerDestination" />
 		
@@ -41,6 +41,7 @@ See the file COPYING.txt for copying permissions
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal"
 		android:orientation="horizontal">
 		<RadioButton
 			xmlns:android="http://schemas.android.com/apk/res/android"
@@ -57,6 +58,8 @@ See the file COPYING.txt for copying permissions
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal"
+		android:textSize="18sp"
 		android:id="@+id/planner_btnTimeChange" /> 
 		
 	<!--  Time Selection -->
@@ -64,13 +67,18 @@ See the file COPYING.txt for copying permissions
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal"
+		android:textSize="18sp"
 		android:id="@+id/planner_btnDateChange" />	
 		
 	<!-- Submit button -->
 	<Button
 		xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:layout_width="140dp"
+		android:layout_gravity="center_horizontal"
+		android:layout_marginTop="20dp"
+		android:textSize="18sp"
 		android:id="@+id/planner_btnSubmit" />	
 			
 </LinearLayout>

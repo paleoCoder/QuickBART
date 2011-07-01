@@ -58,8 +58,9 @@ public class ActivityQuickBart extends ListActivity  {
         fillData();
         registerForContextMenu(getListView());
         
+        //TODO: set up swipe for selection stations
         //set touch listener for swipe
-        getListView().setOnTouchListener(null);
+        //getListView().setOnTouchListener(null);
         
     }
     
@@ -145,6 +146,7 @@ public class ActivityQuickBart extends ListActivity  {
             case DELETE_ID:
                 info = (AdapterContextMenuInfo) item.getMenuInfo();
                 mDbHelper.deleteFavorite(info.id);
+                ActivityHelper.showToastMessage("Favorite deleted", false, getApplicationContext());
                 fillData();
                 return true;
             
@@ -190,6 +192,46 @@ public class ActivityQuickBart extends ListActivity  {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
+        CharSequence text = "";
+        
+        //Check which activity returned and set text message
+        switch(requestCode){
+        	case ACTIVITY_CREATE:
+        		if(resultCode != RESULT_OK){
+		    		text = "There was an error creating the favorite";
+        		}
+        		else{
+        			text = "Favorite added";
+        		}
+        		break;
+        	case ACTIVITY_EDIT:
+        		if(resultCode != RESULT_OK){
+		    		text = "There was an error editing the favorite";
+        		}
+        		else{
+        			text = "Favorite updated";
+        		}
+        		break;
+        	case ACTIVITY_INFO:
+        		if(resultCode != RESULT_OK){
+        			text = "There was an error displaying the information page";
+        		}
+        		break;
+        	case ACTIVITY_DISPLAY:
+        		if(resultCode != RESULT_OK){
+        			text = "There was an error accessing the BART data from the internet";
+        		}
+        		break;
+    		default:
+    			text = "An unknown error has occured";
+    			break;
+        }
+        
+        //only display message when set
+        if(text != ""){
+	        ActivityHelper.showToastMessage(text, true, getApplicationContext());
+        }
+        
         fillData();
     }
 }

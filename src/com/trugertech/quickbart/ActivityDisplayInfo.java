@@ -34,7 +34,7 @@ public class ActivityDisplayInfo extends Activity {
 			"If you have any issues or would like to requset a feature please " +
 			"<a href=\"mailto:android@truger.net?subject=Re:QuickBART\">email me.</a>" +
 			"</p>" +
-			"<p>Updates are posted on the <a href=\"http://blog.trugertech.com\">TrugerTech.com Blog</a></p>";
+			"<p>Updates are posted at<br/> <a href=\"http://blog.trugertech.com\">TrugerTech.com Blog</a></p>";
 		
 		try{
 			manager = getPackageManager().getPackageInfo(getPackageName(), 0);

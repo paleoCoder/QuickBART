@@ -63,7 +63,7 @@ public class ActivityFavoriteEdit extends Activity{
             	else{
                 	//display a message to select different stations
                 	CharSequence text = "Both selections cannot be the same station. Please select at least one different station.";
-                	ActivityHelper.showToastMessage(text, true, getApplicationContext());
+                	Helper.showToastMessage(text, true, getApplicationContext());
             	}
                 
             }
@@ -81,7 +81,7 @@ public class ActivityFavoriteEdit extends Activity{
     	
     	if (stations == null){
     		try{
-    			stations = BartAPI_cmd_stn.getStations();
+    			stations = ((ApplicationQuickBart)this.getApplicationContext()).getStations().getStations();
     		}
         	catch(Exception e){
         		setResult(RESULT_CANCELED);

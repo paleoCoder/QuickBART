@@ -106,6 +106,7 @@ public class ActivityPlanner extends Activity {
             		startActivityForResult(i, ACTIVITY_PLANNER_SCHEDULE);
             		}
             		catch(Exception e){
+            			// TODO: clean up exception
             			System.out.print(e);
             		}
             		
@@ -113,7 +114,7 @@ public class ActivityPlanner extends Activity {
             	else{
                 	//display a message to select different stations
                 	CharSequence text = "Both selections cannot be the same station. Please select at least one different station.";
-                	ActivityHelper.showToastMessage(text, true, getApplicationContext());
+                	Helper.showToastMessage(text, true, getApplicationContext());
             	}
 				
 			}
@@ -127,7 +128,7 @@ public class ActivityPlanner extends Activity {
 				mYear = year;
 				mMonth = monthOfYear;
 				mDay = dayOfMonth;
-				updateDateTime();
+				updateDateTimeDisplay();
 			}
 		};	
 		
@@ -139,7 +140,7 @@ public class ActivityPlanner extends Activity {
 	        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 	            mHour = hourOfDay;
 	            mMin = minute;
-	            updateDateTime();
+	            updateDateTimeDisplay();
 	        }
 	    };
 	
@@ -184,8 +185,8 @@ public class ActivityPlanner extends Activity {
 	protected void onResume() {
 		super.onResume();
 		//update the fields on screen for date and time
-		setCurrentDateTime();
-		updateDateTime();
+		//setCurrentDateTime();
+		updateDateTimeDisplay();
 	}
 	
 	
@@ -199,7 +200,7 @@ public class ActivityPlanner extends Activity {
 				if(resultCode != RESULT_OK){
 		    		CharSequence text = 
 		    			"Sorry there was an error accessing BART information. Please try again.";
-		    		ActivityHelper.showToastMessage(text, true, getApplicationContext());
+		    		Helper.showToastMessage(text, true, getApplicationContext());
 				}
 				break;
 	
@@ -223,7 +224,13 @@ public class ActivityPlanner extends Activity {
 		//get the station listing and set the spinners
 		try{
 			//get station listings from bart API
-			mStations = BartAPI_cmd_stn.getStations();
+			mStations = ((ApplicationQuickBart) getApplicationContext()).getStations().getStations();
+			
+			if(mStations == null){
+				//there was an error getting information from BART API
+				throw new BartApiException();
+			}
+			
 			//use the full names
 			mStationNames = mStations[0];
 			
@@ -248,7 +255,7 @@ public class ActivityPlanner extends Activity {
 		}
     	catch(Exception e){
     		CharSequence text = "Sorry there was an error accessing BART information. Please try again.";
-    		ActivityHelper.showToastMessage(text, true, getApplicationContext());
+    		Helper.showToastMessage(text, true, getApplicationContext());
     		finish();
     	}
 		
@@ -277,7 +284,7 @@ public class ActivityPlanner extends Activity {
 	/***
 	 * Updates the Date and Time buttons with the class members
 	 */
-	private void updateDateTime(){
+	private void updateDateTimeDisplay(){
 		Button btn;
 		String ampm;
 		int hour;
@@ -351,11 +358,11 @@ public class ActivityPlanner extends Activity {
     private void setCurrentDateTime(){		
 		//get the current date and time
 		Calendar c = Calendar.getInstance();
-		mHour = c.get(Calendar.HOUR_OF_DAY);
-		mMin = c.get(Calendar.MINUTE);
-		mMonth = c.get(Calendar.MONTH); //zero based calendar
-		mDay = c.get(Calendar.DATE);
-		mYear = c.get(Calendar.YEAR);
+		this.mHour = c.get(Calendar.HOUR_OF_DAY);
+		this.mMin = c.get(Calendar.MINUTE);
+		this.mMonth = c.get(Calendar.MONTH); //zero based calendar
+		this.mDay = c.get(Calendar.DATE);
+		this.mYear = c.get(Calendar.YEAR);
     }
 	
 

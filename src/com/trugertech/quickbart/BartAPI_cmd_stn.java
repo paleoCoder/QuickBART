@@ -5,29 +5,23 @@
 
 package com.trugertech.quickbart;
 
-import java.net.URL;
 import java.util.ArrayList;
 
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
 import org.xml.sax.Attributes;
-import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 
 import android.util.Log;
 
-public class BartAPI_cmd_stn extends DefaultHandler {
+public class BartApi_cmd_stn extends DefaultHandler {
 	
-    private String currentNode = null;
+    private String mCurrentNode;
 
-    ArrayList<String> nameList;
-    ArrayList<String> abbrList;
+    private ArrayList<String> nameList;
+    private ArrayList<String> abbrList;
     
 
-    BartAPI_cmd_stn() {
+    public BartApi_cmd_stn() {
     }
 
     /**
@@ -36,7 +30,7 @@ public class BartAPI_cmd_stn extends DefaultHandler {
      * The second array is the abbreviated names of the stations.
      * @return
      */
-    String[][] getResults()
+    public String[][] getResults()
     {
     	
     	String[][] ret = { 	nameList.toArray(new String[nameList.size()]), 
@@ -63,20 +57,20 @@ public class BartAPI_cmd_stn extends DefaultHandler {
 
         	// Check and save state for parent nodes
         	if (localName.equals("station")) {
-	        	this.currentNode = localName;
+	        	this.mCurrentNode = localName;
 	        }
         	else if (localName.equals("name")) {
-	        	this.currentNode = localName;
+	        	this.mCurrentNode = localName;
 	        }
         	else if (localName.equals("abbr")) {
-	        	this.currentNode = localName;
+	        	this.mCurrentNode = localName;
 	        }
         	else {
-        		this.currentNode = null;
+        		this.mCurrentNode = null;
         	}
         	
         } catch (Exception ee) {
-        	//TODO: remove logging
+        	//TODO: clean up exception
             Log.d("error in startElement", ee.getStackTrace().toString());
         }
     }
@@ -92,75 +86,16 @@ public class BartAPI_cmd_stn extends DefaultHandler {
 
     	String info = new String(ch, start, length);
    
-    	if (this.currentNode != null){
-    		if (this.currentNode.equals("name")) {
+    	if (this.mCurrentNode != null){
+    		if (this.mCurrentNode.equals("name")) {
     			this.nameList.add(info);
             }
-    		else if (this.currentNode.equals("abbr")) {
+    		else if (this.mCurrentNode.equals("abbr")) {
         		this.abbrList.add(info);
             }
-    		this.currentNode = null;// reset since value saved
+    		this.mCurrentNode = null;// reset since value saved
     	}
     	
     }
     
-    /**
-     * Grabs all the available BART stations from the BART API.
-     * Stores both the Long and Short station names
-     * @return Two dimensional string array wit the long an short
-     * station names
-     * 
-     * @throws Exception
-     *  
-     */
-    public static String[][] getStations() throws Exception {
-    	
-    	String[][] stations = null;
-        	
-		// set up XML source
-		URL bartURL = new URL(BartAPI_URIGenerator.getCmd_Stn());
-		InputSource is = new InputSource(bartURL.openStream());
-		
-		//create XML factory
-		SAXParserFactory factory = SAXParserFactory.newInstance();
-		
-		//crate XML parser
-		SAXParser parser = factory.newSAXParser();
-		
-		//create XML reader
-		XMLReader xmlReader = parser.getXMLReader();
-		
-		//instantiate handler	        	
-		BartAPI_cmd_stn bfh = new BartAPI_cmd_stn();
-		
-		//assign handler
-		xmlReader.setContentHandler(bfh);
-		
-		//parse
-		xmlReader.parse(is);
-		
-		//get some data!
-		stations = bfh.getResults();	
-        	
-    	return stations;
-    }
-    
-    /**
-     * Takes in a station listing array, finds the passed short name
-     * and returns the full name of the station.
-     * If the matching long name is not found the short name is returned.
-     */
-    public static String getStationLongName(String[][] stations, String shortName){
-
-    	int index = 0;
-    	
-    	for(String tmpName : stations[1]){
-    		if(tmpName.equals(shortName)){
-    			return stations[0][index]; 
-    		}
-    		index++;
-    	}
-    	return shortName;
-    }
-
 }

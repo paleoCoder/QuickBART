@@ -113,7 +113,7 @@ public class ActivityFavoriteSchedule extends ListActivity{
             case DELETE_ID:
             	info = (FavoriteRouteAdapter) this.getListAdapter();
                 mDbHelper.deleteFavorite(info.getFavoriteId());
-                ActivityHelper.showToastMessage("Favorite deleted", false, getApplicationContext());
+                Helper.showToastMessage("Favorite deleted", false, getApplicationContext());
                 setResult(RESULT_OK);
                 finish();
                 return true;
@@ -199,7 +199,7 @@ public class ActivityFavoriteSchedule extends ListActivity{
     	ArrayList<FavoriteRoute> favoriteRoutes = new ArrayList<FavoriteRoute>();
     	try{
     		// set up XML source
-        	URL bartURL = new URL(BartAPI_URIGenerator.getCmd_Sched(departure, destination));
+        	URL bartURL = new URL(BartApi_UriGenerator.getCmd_Sched(departure, destination));
         	InputSource is = new InputSource(bartURL.openStream());
         	
         	//create XML factory
@@ -212,7 +212,7 @@ public class ActivityFavoriteSchedule extends ListActivity{
         	XMLReader xmlReader = parser.getXMLReader();
         	
         	//instantiate handler	        	
-        	BartAPI_cmd_sched bfh = new BartAPI_cmd_sched();
+        	BartAPI_cmd_sched bfh = new BartAPI_cmd_sched((ApplicationQuickBart)this.getApplicationContext());
         	
         	//assign handler
         	xmlReader.setContentHandler(bfh);
@@ -278,7 +278,7 @@ public class ActivityFavoriteSchedule extends ListActivity{
         
         // display on if message is set
         if(text != ""){
-        	ActivityHelper.showToastMessage(text, true, getApplicationContext());
+        	Helper.showToastMessage(text, true, getApplicationContext());
         }
         
     }

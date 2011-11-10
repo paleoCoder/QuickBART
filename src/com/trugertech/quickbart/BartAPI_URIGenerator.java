@@ -12,7 +12,7 @@ package com.trugertech.quickbart;
  * @author scott
  *
  */
-public class BartAPI_URIGenerator {
+public class BartApi_UriGenerator {
 	protected static final String API_KEY = "YRSI-ZII8-QHUQ-JXYX";
 	protected static final String URI_ROOT = "http://api.bart.gov/api/";
 	
@@ -69,6 +69,7 @@ public class BartAPI_URIGenerator {
 		}
 		uri = uri.concat("&orig=" + orig 			//origin station
 					+ "&dest=" + dest 		//destination station
+					+ "&time=" + time		//time for arrive/depart
 					+ "&a=4&b=1"			//next 4 and 1 previous train
 					+ "&key=" + API_KEY);	//developer API key	}
 		

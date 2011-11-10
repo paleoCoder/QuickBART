@@ -19,6 +19,8 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
+import com.bugsense.trace.BugSenseHandler;
+
 /**
  * The main screen for QuickBART
  * Displays the user's Favorite Routes
@@ -48,6 +50,11 @@ public class ActivityQuickBart extends ListActivity  {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.favorite_list);
+        
+        //setup the BugSense tracker
+        BugSenseHandler.setup(this,"cc71bf24");
+        BugSenseHandler.submit();
+        
         try{
 	        mDbHelper = new QuickBartDbAdapter(this);
 	        mDbHelper.open();
@@ -58,9 +65,7 @@ public class ActivityQuickBart extends ListActivity  {
         fillData();
         registerForContextMenu(getListView());
         
-        //TODO: set up swipe for selection stations
-        //set touch listener for swipe
-        //getListView().setOnTouchListener(null);
+        
         
     }
     
@@ -146,7 +151,7 @@ public class ActivityQuickBart extends ListActivity  {
             case DELETE_ID:
                 info = (AdapterContextMenuInfo) item.getMenuInfo();
                 mDbHelper.deleteFavorite(info.id);
-                ActivityHelper.showToastMessage("Favorite deleted", false, getApplicationContext());
+                Helper.showToastMessage("Favorite deleted", false, getApplicationContext());
                 fillData();
                 return true;
             
@@ -229,7 +234,7 @@ public class ActivityQuickBart extends ListActivity  {
         
         //only display message when set
         if(text != ""){
-	        ActivityHelper.showToastMessage(text, true, getApplicationContext());
+	        Helper.showToastMessage(text, true, getApplicationContext());
         }
         
         fillData();

@@ -41,27 +41,8 @@ See the file COPYING.txt for copying permissions
 		android:id="@+id/favoriteInfoDest"
 		android:layout_width="wrap_content"
 		android:layout_height="fill_parent"
-		android:layout_centerInParent="true"
+		android:layout_centerHorizontal="true"
 		android:layout_below="@+id/favoriteInfoDepart"
 		android:textSize="24sp"/>
-
-	<!-- Fare display aligned on right  -->
-	<!-- 
-	<TextView
-		xmlns:android="http://schemas.android.com/apk/res/android"
-   		android:id="@+id/favoriteFareText"
-   		android:layout_width="wrap_content"
-   		android:layout_height="fill_parent"
-   		android:layout_alignParentRight="true"
-   		android:text="Fare" />
-	<TextView
-   		xmlns:android="http://schemas.android.com/apk/res/android"
-   		android:id="@+id/favoriteFare"
-   		android:layout_width="wrap_content"
-   		android:layout_height="fill_parent"
-   		android:layout_alignParentRight="true"
-   		android:layout_below="@+id/favoriteFareText"
-   		android:textSize="24sp"/>
-	 -->
 
 </RelativeLayout>

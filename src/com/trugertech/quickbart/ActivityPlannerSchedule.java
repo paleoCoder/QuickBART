@@ -102,7 +102,7 @@ public class ActivityPlannerSchedule extends ListActivity {
 			}
 
     		// set up XML source
-        	URL bartURL = new URL(BartAPI_URIGenerator.getCmd_Schedule_Planned(departure, destination, date, time, depart));
+        	URL bartURL = new URL(BartApi_UriGenerator.getCmd_Schedule_Planned(departure, destination, date, time, depart));
         	InputSource is = new InputSource(bartURL.openStream());
         	
         	//create XML factory
@@ -115,7 +115,7 @@ public class ActivityPlannerSchedule extends ListActivity {
         	XMLReader xmlReader = parser.getXMLReader();
         	
         	//instantiate handler	        	
-        	BartAPI_cmd_sched bfh = new BartAPI_cmd_sched();
+        	BartAPI_cmd_sched bfh = new BartAPI_cmd_sched((ApplicationQuickBart)this.getApplicationContext());
         	
         	//assign handler
         	xmlReader.setContentHandler(bfh);

@@ -11,21 +11,20 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import android.util.Log;
-
 public class BartAPI_cmd_sched extends DefaultHandler {
 	
     private ArrayList<FavoriteRoute> favoriteRoutes;
     private FavoriteRoute route;
     private FavoriteTripLeg routeLeg;
     
-    private String[][] stations;
+    private BartApi_Stations mBartStations;
 
 //    private String parentNode;
 //    private String currentNode;
 
     
-    BartAPI_cmd_sched() {
+    public BartAPI_cmd_sched(ApplicationQuickBart appContext) throws BartApiException {
+    		this.mBartStations = appContext.getStations();	
     }
 
     /**
@@ -45,14 +44,6 @@ public class BartAPI_cmd_sched extends DefaultHandler {
     	route = null;
     	favoriteRoutes = new ArrayList<FavoriteRoute>();
     	
-    	try{
-    		this.stations = BartAPI_cmd_stn.getStations();
-    	}
-    	catch(Exception e){
-    		//TODO: log error to system log
-    		this.stations = new String[][] {{""},{""}};
-    	}
-    	
     }
 
     @Override
@@ -64,7 +55,6 @@ public class BartAPI_cmd_sched extends DefaultHandler {
     @Override
     public void startElement(String namespaceURI, String localName, String qName, Attributes atts) throws SAXException {
 
-        try {
         	// Check and save state for parent nodes
         	if (localName.equals("trip")) {
         		
@@ -91,21 +81,22 @@ public class BartAPI_cmd_sched extends DefaultHandler {
 				this.routeLeg = new FavoriteTripLeg();
         		
 				//save attributes of trip
-	    		this.routeLeg.setOrigin(BartAPI_cmd_stn.getStationLongName(stations, atts.getValue("origin")));
-	        	this.routeLeg.setDestination(BartAPI_cmd_stn.getStationLongName(stations, atts.getValue("destination")));
-	        	this.routeLeg.setOriginTime(atts.getValue("origTimeMin"));
-	        	this.routeLeg.setDestinationTime(atts.getValue("destTimeMin"));
-	        	this.routeLeg.setOrder(Integer.parseInt(atts.getValue("order")));
-	        	this.routeLeg.setTransferCode(atts.getValue("transfercode"));
-	        	this.routeLeg.setTrainHeadStation(BartAPI_cmd_stn.getStationLongName(stations, atts.getValue("trainHeadStation")));
+	    		try {
+					this.routeLeg.setOrigin(mBartStations.getStationLongName(atts.getValue("origin")));
+					this.routeLeg.setDestination(mBartStations.getStationLongName(atts.getValue("destination")));
+		        	this.routeLeg.setOriginTime(atts.getValue("origTimeMin"));
+		        	this.routeLeg.setDestinationTime(atts.getValue("destTimeMin"));
+		        	this.routeLeg.setOrder(Integer.parseInt(atts.getValue("order")));
+		        	this.routeLeg.setTransferCode(atts.getValue("transfercode"));
+		        	this.routeLeg.setTrainHeadStation(mBartStations.getStationLongName(atts.getValue("trainHeadStation")));
+				} catch (BartApiException e) {
+					//there was an error communicating with the BART API, we can't do anything
+					throw new SAXException();
+				}
 	        					
 				//add trip leg to current route
 				this.route.tripLegs.add(this.routeLeg);
 	        }
-
-        } catch (Exception ee) {
-            Log.d("error in startElement", ee.getStackTrace().toString());
-        }
     }
 
     @Override

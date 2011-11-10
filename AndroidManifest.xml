@@ -6,12 +6,12 @@ See the file COPYING.txt for copying permissions
  -->
  
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.trugertech.quickbart" android:versionName="3.0.0" android:versionCode="8">
+      package="com.trugertech.quickbart" android:versionName="3.1.0" android:versionCode="9">
 <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 <uses-sdk android:minSdkVersion="7"></uses-sdk>
 
 
-    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
+    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:name="ApplicationQuickBart">
         
         <activity android:name="ActivityTabMain" android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
